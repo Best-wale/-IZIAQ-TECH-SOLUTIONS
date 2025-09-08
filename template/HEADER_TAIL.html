@@ -45,18 +45,24 @@
                     
                     <a href="{% url 'contact'%}" class="text-white hover:text-accent transition-colors duration-300">Contact</a>
                 </div>
-                <!-- Cart Icon -->
+                
+            {% if item_count == 0 %}
+            
+                    {%else%}
+                    <!-- Cart Icon -->
                 <div class="flex items-center space-x-4">
                     <a href="{% url 'view_cart'%}" class="relative">
                         <i class="fas fa-shopping-cart text-white text-xl cursor-pointer hover:text-accent transition-colors"></i>
                         <span class="absolute -top-2 -right-2 bg-accent text-primary text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">{{ item_count|default:0 }}</span>
                     </a>
                     
+
                 <!-- Mobile Menu Button -->
                 <button id="mobile-menu-btn" class="md:hidden text-white">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
+                    {%endif%}
             
             <!-- Mobile Navigation -->
             <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
