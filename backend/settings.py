@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
+from decouple import config
 import dj_database_url
 from pathlib import Path
 import os
@@ -23,9 +24,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ir4#ge)!)0afgs9b-1skjhfl&4j*6vj6^2ef_v$h_y(0#zlt7i'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ['iziaq-tech-solutions.onrender.com']
+DEBUG = False
+ALLOWED_HOSTS = ['iziaq-tech-solutions.onrender.com','127.0.0.1']
 
 
 # Application definition
@@ -139,7 +139,7 @@ if not DEBUG:
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
-from decouple import config
+
 
 CLOUDINARY_API_KEY = config('CLOUDINARY_API_KEY')
 CLOUDINARY_API_SECRET = config('CLOUDINARY_API_SECRET')
