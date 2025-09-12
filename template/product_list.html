@@ -121,8 +121,11 @@
                     <!-- Sort and Results Info -->
                     <div class="flex flex-col md:flex-row justify-between items-center mb-6 bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
                         <div class="mb-4 md:mb-0">
-                            <span id="results-count" class="text-gray-600 dark:text-gray-400">Showing 24 of 156 products</span>
-                        </div>
+    <span id="results-count" class="text-gray-600 dark:text-gray-400">
+        Showing {{ page_obj|length }} of {{ page_obj.paginator.count }} products
+    </span>
+</div>
+
                         <div class="flex items-center space-x-4">
                             <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Sort by:</label>
                             <select id="sort-select" class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-base">
@@ -138,7 +141,7 @@
                     <!-- Products Grid -->
                     <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
                         
-                        {%for product in products%}
+                        {%for product in page_obj%}
                          <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                     <div class="h-48 bg-gradient-to-br from-primary to-purple-700 flex items-center justify-center relative">
                         <img src="{{product.image.url}}">
@@ -167,19 +170,55 @@
                     </div>
 
                     <!-- Pagination -->
+                
+
                     <div class="flex justify-center items-center space-x-2">
-                        <button class="px-3 py-2 text-gray-500 dark:text-gray-400 hover:text-primary transition-colors">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <button class="px-3 py-2 bg-primary text-white rounded">1</button>
-                        <button class="px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">2</button>
-                        <button class="px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">3</button>
-                        <span class="px-3 py-2 text-gray-500 dark:text-gray-400">...</span>
-                        <button class="px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">12</button>
-                        <button class="px-3 py-2 text-gray-500 dark:text-gray-400 hover:text-primary transition-colors">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
-                    </div>
+
+    {# Previous button #}
+    {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}"
+           class="px-3 py-2 text-gray-500 dark:text-gray-400 hover:text-primary transition-colors">
+            <i class="fas fa-chevron-left"></i>
+        </a>
+    {% else %}
+        <span class="px-3 py-2 text-gray-400 cursor-not-allowed">
+            <i class="fas fa-chevron-left"></i>
+        </span>
+    {% endif %}
+
+    {# Page numbers #}
+    {% for num in page_obj.paginator.page_range %}
+        {% if num == page_obj.number %}
+            <span class="px-3 py-2 bg-primary text-white rounded">{{ num }}</span>
+        {% elif num >= page_obj.number|add:'-2' and num <= page_obj.number|add:'2' %}
+            <a href="?page={{ num }}"
+               class="px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
+                {{ num }}
+            </a>
+        {% elif num == 1 or num == page_obj.paginator.num_pages %}
+            <a href="?page={{ num }}"
+               class="px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
+                {{ num }}
+            </a>
+        {% elif num == page_obj.number|add:'-3' or num == page_obj.number|add:'3' %}
+            <span class="px-3 py-2 text-gray-500 dark:text-gray-400">...</span>
+        {% endif %}
+    {% endfor %}
+
+    {# Next button #}
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}"
+           class="px-3 py-2 text-gray-500 dark:text-gray-400 hover:text-primary transition-colors">
+            <i class="fas fa-chevron-right"></i>
+        </a>
+    {% else %}
+        <span class="px-3 py-2 text-gray-400 cursor-not-allowed">
+            <i class="fas fa-chevron-right"></i>
+        </span>
+    {% endif %}
+
+</div>
+
                 </div>
             </div>
         </div>

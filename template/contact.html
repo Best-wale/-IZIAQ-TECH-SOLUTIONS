@@ -33,7 +33,7 @@
                     <h3 class="text-xl font-bold text-primary dark:text-white mb-3">Phone Support</h3>
                     <p class="text-gray-700 dark:text-gray-300 mb-4">Immediate assistance for urgent tech issues</p>
                     <div class="space-y-2">
-                        <p class="text-lg font-semibold text-primary dark:text-white">+1 (555) 123-TECH</p>
+                        <p class="text-lg font-semibold text-primary dark:text-white">+234 806 7785 543</p>
                         <p class="text-sm text-gray-600 dark:text-gray-400">Mon-Fri: 9AM-6PM</p>
                         <p class="text-sm text-gray-600 dark:text-gray-400">Emergency: 24/7</p>
                     </div>
@@ -276,7 +276,7 @@
                                 <i class="fas fa-map-marker-alt text-primary mr-4 mt-1"></i>
                                 <div>
                                     <h4 class="font-semibold text-gray-900 dark:text-white mb-1">Address</h4>
-                                    <p class="text-gray-700 dark:text-gray-300">123 Tech Street<br>Innovation City, TC 12345<br>United States</p>
+                                    <p class="text-gray-700 dark:text-gray-300">Shop No 1237 F9 <br/>LANE ALABA INTERNATIONAL MARKET OJO</p>
                                 </div>
                             </div>
                             
@@ -284,7 +284,7 @@
                                 <i class="fas fa-phone text-primary mr-4 mt-1"></i>
                                 <div>
                                     <h4 class="font-semibold text-gray-900 dark:text-white mb-1">Phone Numbers</h4>
-                                    <p class="text-gray-700 dark:text-gray-300">Main: +1 (555) 123-TECH<br>Emergency: +1 (555) 911-TECH<br>Sales: +1 (555) 123-SALE</p>
+                                    <p class="text-gray-700 dark:text-gray-300">Main: +234 806 7785 543</p>
                                 </div>
                             </div>
                             
@@ -292,51 +292,52 @@
                                 <i class="fas fa-envelope text-primary mr-4 mt-1"></i>
                                 <div>
                                     <h4 class="font-semibold text-gray-900 dark:text-white mb-1">Email Addresses</h4>
-                                    <p class="text-gray-700 dark:text-gray-300">General: info@iziaq-tech.com<br>Support: support@iziaq-tech.com<br>Sales: sales@iziaq-tech.com</p>
+                                    <p class="text-gray-700 dark:text-gray-300">General: iziaqe@yahoo.com</p>
                                 </div>
                             </div>
                             
-                            <div class="flex items-start">
+                            <!--div class="flex items-start">
                                 <i class="fas fa-car text-primary mr-4 mt-1"></i>
                                 <div>
                                     <h4 class="font-semibold text-gray-900 dark:text-white mb-1">Parking</h4>
                                     <p class="text-gray-700 dark:text-gray-300">Free customer parking available<br>Handicap accessible<br>Public transit: Tech Station (2 blocks)</p>
                                 </div>
-                            </div>
+                            </div-->
                         </div>
                         
-                        <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-600">
+                        <!--div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-600">
                             <button class="w-full bg-primary hover:bg-purple-700 text-white py-3 px-6 rounded-lg font-semibold transition-colors">
                                 <i class="fas fa-directions mr-2"></i>Get Directions
                             </button>
-                        </div>
+                        </div-->
                     </div>
                 </div>
 
-                <!-- Map Placeholder -->
-                <div class="bg-secondary dark:bg-gray-700 rounded-xl h-96 lg:h-full min-h-96 flex items-center justify-center shadow-lg relative overflow-hidden">
-                    <div class="text-center z-10">
-                        <i class="fas fa-map text-6xl text-primary mb-4"></i>
-                        <h3 class="text-2xl font-bold text-primary mb-2">Interactive Map</h3>
-                        <p class="text-gray-600 dark:text-gray-400 mb-4">Find us in the heart of Innovation City</p>
-                        <button class="bg-primary hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
-                            View on Google Maps
-                        </button>
-                    </div>
-                    <!-- Map Grid Pattern -->
-                    <div class="absolute inset-0 opacity-10">
-                        <div class="grid grid-cols-8 h-full">
-                            <div class="border-r border-gray-400"></div>
-                            <div class="border-r border-gray-400"></div>
-                            <div class="border-r border-gray-400"></div>
-                            <div class="border-r border-gray-400"></div>
-                            <div class="border-r border-gray-400"></div>
-                            <div class="border-r border-gray-400"></div>
-                            <div class="border-r border-gray-400"></div>
-                            <div></div>
-                        </div>
-                    </div>
-                </div>
+                
+                                    <!-- Interactive Map -->
+<div id="map" class="bg-secondary dark:bg-gray-700 rounded-xl h-96 lg:h-full min-h-96 flex items-center justify-center shadow-lg relative overflow-hidden" style="height: 24rem;"></div>
+
+<!-- Leaflet CSS & JS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+  // Initialize map
+  var map = L.map('map').setView([6.458985, 3.395905], 16); // Lagos coords
+
+  // Add OpenStreetMap tiles
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  // Add marker
+  L.marker([6.458985, 3.395905])
+    .addTo(map)
+    .bindPopup("<b>IZIAQ-TECH SOLUTIONS</b><br>Shop No 1237 F9 LANE ALABA INTERNATIONAL MARKET OJO")
+    .openPopup();
+</script>
+                
             </div>
         </div>
     </section>
@@ -450,7 +451,7 @@
             
             <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
                 <button class="bg-white text-primary hover:bg-accent px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105">
-                    <i class="fas fa-phone mr-2"></i>Call Now: (555) 123-TECH
+                    <i class="fas fa-phone mr-2"></i>Call Now: +234 806 7785 543
                 </button>
                 <button class="border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300">
                     <i class="fas fa-envelope mr-2"></i>Send Email

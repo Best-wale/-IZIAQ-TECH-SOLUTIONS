@@ -62,7 +62,7 @@
                     <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
                         <!-- Cart Header -->
                         <div class="bg-accent dark:bg-gray-700 px-6 py-4">
-                            <h2 class="text-xl font-semibold text-primary dark:text-white">Items in Your Cart (3)</h2>
+                            <h2 class="text-xl font-semibold text-primary dark:text-white">Items in Your Cart ({{item_count}})</h2>
                         </div>
                         
                         <!-- Cart Items List -->
@@ -90,8 +90,8 @@
                                     </div>
                                     <!-- Price -->
                                     <div class="text-right">
-                                        <p class="text-xl font-bold text-primary dark:text-white">{{ item.subtotal }}</p>
-                                        <p class="text-sm text-gray-500 line-through">$1,499</p>
+                                        <p class="text-xl font-bold text-primary dark:text-white">₦{{ item.subtotal }}</p>
+                                        <p class="text-sm text-gray-500 line-through">₦1,499</p>
                                     </div>
                                     <!-- Remove Button -->
                                     <a href="{% url 'delete_from_cart' item.id %}" class="remove-item text-red-500 hover:text-red-700 transition-colors">
@@ -133,11 +133,11 @@
                         <div class="space-y-4">
                             <div class="flex justify-between">
                                 <span class="text-gray-600 dark:text-gray-400">Subtotal</span>
-                                <span id="subtotal" class="font-semibold text-gray-900 dark:text-white">$2,647</span>
+                                <span id="subtotal" class="font-semibold text-gray-900 dark:text-white">₦2,647</span>
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-gray-600 dark:text-gray-400">Discount</span>
-                                <span id="discount" class="font-semibold text-green-600">-$0</span>
+                                <span id="discount" class="font-semibold text-green-600">-₦0</span>
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-gray-600 dark:text-gray-400">Shipping</span>
@@ -145,12 +145,12 @@
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-gray-600 dark:text-gray-400">Tax (8.5%)</span>
-                                <span id="tax" class="font-semibold text-gray-900 dark:text-white">$225</span>
+                                <span id="tax" class="font-semibold text-gray-900 dark:text-white">₦225</span>
                             </div>
                             <hr class="border-gray-200 dark:border-gray-600">
                             <div class="flex justify-between text-lg">
                                 <span class="font-bold text-gray-900 dark:text-white">Total</span>
-                                <span id="total" class="font-bold text-primary dark:text-white">$2,872</span>
+                                <span id="total" class="font-bold text-primary dark:text-white">₦2,872</span>
                             </div>
                         </div>
                         
@@ -177,7 +177,7 @@
                                 </div>
                                 <div class="flex items-center text-sm text-gray-600 dark:text-gray-400">
                                     <i class="fas fa-truck text-green-500 mr-2"></i>
-                                    Free Shipping on $500+
+                                    Free Shipping on ₦500+
                                 </div>
                                 <div class="flex items-center text-sm text-gray-600 dark:text-gray-400">
                                     <i class="fas fa-headset text-green-500 mr-2"></i>
@@ -283,7 +283,7 @@
                                 <div class="ml-3 flex-1">
                                     <div class="flex justify-between">
                                         <span class="font-semibold text-gray-900 dark:text-white">Express Shipping</span>
-                                        <span class="font-bold text-gray-900 dark:text-white">$19.99</span>
+                                        <span class="font-bold text-gray-900 dark:text-white">₦19.99</span>
                                     </div>
                                     <p class="text-sm text-gray-600 dark:text-gray-400">2-3 business days</p>
                                 </div>
@@ -293,7 +293,7 @@
                                 <div class="ml-3 flex-1">
                                     <div class="flex justify-between">
                                         <span class="font-semibold text-gray-900 dark:text-white">Overnight Shipping</span>
-                                        <span class="font-bold text-gray-900 dark:text-white">$39.99</span>
+                                        <span class="font-bold text-gray-900 dark:text-white">₦39.99</span>
                                     </div>
                                     <p class="text-sm text-gray-600 dark:text-gray-400">Next business day</p>
                                 </div>
@@ -372,7 +372,7 @@
                                     <p class="text-sm font-semibold text-gray-900 dark:text-white">ASUS ROG Strix Gaming Laptop</p>
                                     <p class="text-xs text-gray-600 dark:text-gray-400">Qty: 1</p>
                                 </div>
-                                <span class="text-sm font-bold text-gray-900 dark:text-white">$1,299</span>
+                                <span class="text-sm font-bold text-gray-900 dark:text-white">₦1,299</span>
                             </div>
                             <div class="flex items-center space-x-3">
                                 <div class="w-12 h-12 bg-gradient-to-br from-secondary to-gray-400 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -382,7 +382,7 @@
                                     <p class="text-sm font-semibold text-gray-900 dark:text-white">NVIDIA RTX 4080</p>
                                     <p class="text-xs text-gray-600 dark:text-gray-400">Qty: 1</p>
                                 </div>
-                                <span class="text-sm font-bold text-gray-900 dark:text-white">$1,199</span>
+                                <span class="text-sm font-bold text-gray-900 dark:text-white">₦1,199</span>
                             </div>
                             <div class="flex items-center space-x-3">
                                 <div class="w-12 h-12 bg-gradient-to-br from-accent to-purple-300 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -392,7 +392,7 @@
                                     <p class="text-sm font-semibold text-gray-900 dark:text-white">Gaming Keyboard</p>
                                     <p class="text-xs text-gray-600 dark:text-gray-400">Qty: 1</p>
                                 </div>
-                                <span class="text-sm font-bold text-gray-900 dark:text-white">$149</span>
+                                <span class="text-sm font-bold text-gray-900 dark:text-white">₦149</span>
                             </div>
                         </div>
                         
@@ -402,11 +402,11 @@
                         <div class="space-y-3">
                             <div class="flex justify-between">
                                 <span class="text-gray-600 dark:text-gray-400">Subtotal</span>
-                                <span class="font-semibold text-gray-900 dark:text-white">$2,647</span>
+                                <span class="font-semibold text-gray-900 dark:text-white">₦2,647</span>
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-gray-600 dark:text-gray-400">Discount</span>
-                                <span class="font-semibold text-green-600">-$0</span>
+                                <span class="font-semibold text-green-600">-₦0</span>
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-gray-600 dark:text-gray-400">Shipping</span>
@@ -414,12 +414,12 @@
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-gray-600 dark:text-gray-400">Tax</span>
-                                <span class="font-semibold text-gray-900 dark:text-white">$225</span>
+                                <span class="font-semibold text-gray-900 dark:text-white">₦225</span>
                             </div>
                             <hr class="border-gray-200 dark:border-gray-600">
                             <div class="flex justify-between text-lg">
                                 <span class="font-bold text-gray-900 dark:text-white">Total</span>
-                                <span class="font-bold text-primary dark:text-white">$2,872</span>
+                                <span class="font-bold text-primary dark:text-white">₦2,872</span>
                             </div>
                         </div>
                         
@@ -479,7 +479,7 @@
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-gray-600 dark:text-gray-400">Total Amount:</span>
-                                <span class="font-bold text-primary dark:text-white text-lg">$2,872</span>
+                                <span class="font-bold text-primary dark:text-white text-lg">₦2,872</span>
                             </div>
                         </div>
                     </div>

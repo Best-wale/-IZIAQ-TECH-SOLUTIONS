@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .models import Product, Cart, CartItem
 def get_cart_item_count(request):
@@ -35,14 +36,28 @@ def contact(request):
 
 def products(request):
     products = Product.objects.all()
+    
+    
+    paginator = Paginator(products, 3)  #added pagination
+    page_number = request.GET.get('page')
+    try:
+        page_obj = paginator.page(page_number)
+    except PageNotAnInteger:
+        page_obj = paginator.page(1)
+    except EmptyPage:
+        page_obj = paginator.page(paginator.num_pages)
+
+    
     item_count = get_cart_item_count(request)
-    return render(request, 'product_list.html', {'products': products, 'item_count': item_count})
+
+    return render(request, 'product_list.html', {'page_obj': page_obj, 'item_count': item_count})
 
 def view_cart(request):
     item_count = get_cart_item_count(request)
     cart = Cart.objects.get(id=request.session.get('cart_id', None))
     items = CartItem.objects.filter(cart=cart)
     return render(request, 'view_cart.html', {'items': items, 'item_count': item_count})
+
 def add_to_cart(request, product_id):
     product = Product.objects.get(id=product_id)
     cart, created = Cart.objects.get_or_create(id=request.session.get('cart_id', None))
@@ -66,10 +81,7 @@ def delete_from_cart(request, cart_item_id):
 
     # Optionally, you can redirect to the cart view or any other page
     return redirect('view_cart')  # Assuming 'view_cart' is the name of your cart view 
-def view_cart(request):
-    cart = Cart.objects.get(id=request.session.get('cart_id', None))
-    items = CartItem.objects.filter(cart=cart)
-    return render(request, 'view_cart.html', {'items': items})
+
 '''
 def checkout(request):
     cart = Cart.objects.get(id=request.session.get('cart_id', None))
